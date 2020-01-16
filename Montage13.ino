@@ -26,7 +26,7 @@ void loop(){
     digitalWrite(H, LOW);
     compteur=0;
     }
-    Serial.print(« le compteur= ») ;
+    Serial.print(" le compteur= ") ;
     Serial.println(compteur);
 
 }
