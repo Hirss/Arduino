@@ -3,7 +3,7 @@
 #define vert 13
 #define rouge 7
 
-int compteur;
+int count;
 
 
 void setup() {
@@ -15,25 +15,25 @@ void setup() {
 }
 
 void loop() {
-    if(digitalRead(S1) == true) {
-    compteur++;
+  if(digitalRead(S1) == true && count < 5) {
+    digitalWrite(vert, HIGH);
+    count++;
   }
   
-  if(digitalRead(S2) == true) {
-    compteur--;
-  } 
-  Serial.print("Places = ");
-  Serial.println(compteur);
-  if(count < 20){
-    digitalWrite(vert, HIGH);
-  }else{
+  if(count >= 5){
     digitalWrite(vert, LOW);
     digitalWrite(rouge, HIGH);
   }
-  if(count == 20){
-    digitalWrite(rouge, HIGH);
-  }else{
-  digitalWrite(rouge, LOW);
-  digitalWrite(vert, HIGH);
+  
+  if(count < 5) {
+    digitalWrite(rouge, LOW);
+    digitalWrite(vert, HIGH);
   }
+  
+  if(digitalRead(S2) == true) {
+    count--;
+  } 
+  
+  Serial.print("Places = ");
+  Serial.println(count);
 }
